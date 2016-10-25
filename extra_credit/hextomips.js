@@ -122,3 +122,34 @@ function binaryToMips(){
     result += getHTMLInstructionFormatTable(bits); // get the HTML table for displaying the instruction format
     document.getElementById("hex_result").innerHTML = result;
 }
+
+function convertMipsToHex(inst) {
+    // get the typed instruction string from the instruction field
+    var inst = inst.toLowerCase();
+
+    // remove comas, parenthesis and extra spaces of the typed instruction
+    inst = inst.replace(/,/g, ' ');
+    inst = inst.replace(/\(/g, ' ');
+    inst = inst.replace(/\)/g, ' ');
+    inst = inst.trim();
+    inst = inst.replace(/\s{2,}/g, ' ');
+    typedInstructionSymbol = inst.split(' ')[0].toUpperCase();
+
+    // get the instruction object of the typed instruction
+    var instObject = searchInstruction(typedInstructionSymbol);
+
+    // if instruction was found, print instruction info
+    var instruction_info = getInstructionInfo(instObject);
+
+    // get the typed instruction bits and return null if bits not found and print error message
+    inst_bits = getTypedInstructionBits(instObject, inst);
+
+    // print the typed instruction binary and hexadecimal value and its bits table
+    var result = "";
+    var bin = ""; //get the binary value of the typed instruction
+    for(j = 0; j < inst_bits.length; j++){
+        bin += inst_bits[j][3];
+    }
+
+    return binaryToHex(bin)
+}
