@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Load JQuery -->
+    <script src="./jquery-3.1.1.min.js"></script>
+
+    <!-- Load some other JS files -->
+    <script src="./instructioninfo.js"></script>
+    <script src="./helper.js"></script>
+    <script src="./mipstohex.js"></script>
+    <script src="./hextomips.js"></script>
+    <script src="./main.js"></script>
+    <title>HexToMips</title>
+</head>
+<body>
+    <form id="frm1" action="form_action.asp">
+    Input MIPS hex: <br> <textarea id="input_hex" rows="20" cols="80" type="text" name="fname"></textarea><br>
+    Output Instruction List:<br> <textarea id="output_mips" rows="20" cols="80" type="text" name="lname"></textarea><br>
+    <input type="button" onclick="myFunction()" value="Submit">
+    </form>
+
+</body>
+</html>
